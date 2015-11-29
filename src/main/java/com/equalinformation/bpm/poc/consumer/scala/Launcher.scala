@@ -13,7 +13,7 @@ object Launcher {
       val root = new WebAppContext();
       root.setContextPath("/");
       root.setDescriptor("src/main/webapp/WEB-INF/web.xml");
-      root.setResourceBase("target/activiti-consumer-scala-1.0-SNAPSHOT/WEB-INF/classes");
+      root.setResourceBase("target/classes");
       root.setParentLoaderPriority(true);
 
       println("Starting Jetty Server...")
@@ -22,7 +22,7 @@ object Launcher {
       s.start();
 
       println("... done!")
-      println("Scaladin application deployed at: http://localhost:9000")
+      println("Application deployed at: http://localhost:9000")
 
       s.join();
     } catch {
