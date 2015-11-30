@@ -70,10 +70,10 @@ class ActivitiConsumerUI extends UI(title = "Activiti Consumer") {
 
       val tasks = addItem("Tasks")
       val processes = addItem("Processes")
-      val reports = addItem("Reports")
-      val manage = addItem("Manage")
+      val reports = addItem("Reports", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW3))
+      val manage = addItem("Manage", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW4))
 
-      val inbox = tasks.addItem("Inbox")
+      val inbox = tasks.addItem("Inbox", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.INBOX_VIEW))
       val queued = tasks.addItem("Queued")
       val involved = tasks.addItem("Involved")
       val archived = tasks.addItem("Archived")
@@ -93,6 +93,8 @@ object SampleView {
   val VIEW2 = "ClassBasedView"
   val VIEW3 = ""
   val VIEW4 = ""
+
+  val INBOX_VIEW = "ClassBasedView"
 
   private var count = 1
 
