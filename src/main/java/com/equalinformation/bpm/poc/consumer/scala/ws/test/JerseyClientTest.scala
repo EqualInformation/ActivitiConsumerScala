@@ -19,18 +19,22 @@ object JerseyClientTest {
       client.addFilter(new HTTPBasicAuthFilter("kermit", "kermit"))
       val webResource: WebResource = client.resource("http://localhost:8091/activiti-rest/service/runtime/tasks?candidateUser?kermit")
       val response: ClientResponse = webResource.accept("application/json").get(classOf[ClientResponse])
+
       if (response.getStatus != 200) {
         throw new RuntimeException("Activiti call failed : HTTP error code : " + response.getStatus)
       }
+
       println("Response status: " + response.getStatus)
       val output: String = response.getEntity(classOf[String])
       println("Output from Server .... \n")
       println(output)
+
       val parser: JsonParser = new JsonParser
       val rootObject: JsonObject = parser.parse(output).getAsJsonObject
       val taskElement: JsonElement = rootObject.get("data")
       val gson: Gson = new Gson
       var taskList: java.util.List[Task] = new java.util.ArrayList[Task]
+
       if (taskElement.isJsonObject) {
         val task: Task = gson.fromJson(taskElement, classOf[Task])
         taskList.add(task)
@@ -40,6 +44,7 @@ object JerseyClientTest {
         }.getType
         taskList = gson.fromJson(taskElement, projectListType)
       }
+
       println("Size of list: " + taskList.size)
 //      System.out.println("Some data from first element: " + taskList.get(0).getName)
     }
@@ -48,6 +53,8 @@ object JerseyClientTest {
         e.printStackTrace
       }
     }
+
   }
+
 }
 
