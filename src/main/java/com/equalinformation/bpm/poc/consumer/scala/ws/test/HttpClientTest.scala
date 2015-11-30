@@ -38,7 +38,7 @@ object HttpClientTest {
     * Returns the text content from a REST URL. Returns a blank String if there
     * is a problem.
     */
-  def getRestContent(url:String): String = {
+  def getRestContent(url: String): String = {
     val httpClient = new DefaultHttpClient()
     val httpResponse = httpClient.execute(new HttpGet(url))
     val entity = httpResponse.getEntity()
