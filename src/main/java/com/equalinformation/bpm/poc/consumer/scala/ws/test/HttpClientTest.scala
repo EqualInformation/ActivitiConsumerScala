@@ -12,6 +12,7 @@ import scala.xml.XML
 
 /**
   * Created by bpupadhyaya on 11/30/15.
+  * This code is due to http://alvinalexander.com/scala/scala-rest-client-apache-httpclient-restful-clients
   */
 object HttpClientTest {
 
