@@ -73,7 +73,7 @@ class ActivitiConsumerUI extends UI(title = "Activiti Consumer") {
       val reports = addItem("Reports", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW3))
       val manage = addItem("Manage", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW4))
 
-      val inbox = tasks.addItem("Inbox", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.INBOX_VIEW))
+      val inbox = tasks.addItem("Inbox", (e: MenuBar.MenuItem) => createTaskTables())
       val queued = tasks.addItem("Queued")
       val involved = tasks.addItem("Involved")
       val archived = tasks.addItem("Archived")
@@ -84,6 +84,19 @@ class ActivitiConsumerUI extends UI(title = "Activiti Consumer") {
 
     }
     addComponent(menuBar)
+  }
+
+  private def createTaskTables(): VerticalLayout = new VerticalLayout {
+    //TODO
+    val inboxTaskSummaryTable = new Table() {
+      
+    }
+    addComponent(inboxTaskSummaryTable)
+
+    val inboxTaskDetailTable = new Table() {
+
+    }
+    addComponent(inboxTaskDetailTable)
   }
 
 }
@@ -115,6 +128,7 @@ class SampleView extends VerticalLayout with Navigator.View {
     }
     layout.margin = true
     add(layout)
+
   }
 
   init()
