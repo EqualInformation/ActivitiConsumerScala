@@ -1,6 +1,7 @@
 package com.equalinformation.bpm.poc.consumer.scala.ws.domain
 
-import vaadin.scala.Button
+import com.vaadin.ui.Button
+
 
 /**
   * Created by bpupadhyaya on 11/29/15.
