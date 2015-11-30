@@ -1,13 +1,13 @@
 package com.equalinformation.bpm.poc.consumer.scala.ws.test
 
-import java.io._
-import org.apache.http.HttpEntity
-import org.apache.http.HttpResponse
-import org.apache.http.client.ClientProtocolException
-import org.apache.http.client.HttpClient
+//import java.io._
+//import org.apache.http.HttpEntity
+//import org.apache.http.HttpResponse
+//import org.apache.http.client.ClientProtocolException
+//import org.apache.http.client.HttpClient
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
-import scala.collection.mutable.StringBuilder
+//import scala.collection.mutable.StringBuilder
 import scala.xml.XML
 
 /**
@@ -29,8 +29,9 @@ object HttpClientTest {
     val text = (xml \\ "channel" \\ "item" \ "condition" \ "@text") text
 
     // (4) print the results
-    val currentWeather = format("The current temperature is %s degrees, and the sky is %s.", temp, text.toLowerCase())
-    println(currentWeather)
+//    val currentWeather = format("The current temperature is %s degrees, and the sky is %s.", temp, text.toLowerCase())
+//    println(currentWeather)
+    println(content)
   }
 
   /**
