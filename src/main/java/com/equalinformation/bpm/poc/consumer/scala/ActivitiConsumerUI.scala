@@ -61,11 +61,27 @@ class ActivitiConsumerUI extends UI(title = "Activiti Consumer") {
   private def buildApplicationMenu(navigator: Navigator): HorizontalLayout = new HorizontalLayout {
     width = 100 pct;
     height = 25 px;
+
     val menuBar = new MenuBar {
-      addItem("Tasks", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW1))
-      addItem("Processes", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW2))
-      addItem("Reports", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW3))
-      addItem("Manage", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW4))
+//      addItem("Tasks", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW1))
+//      addItem("Processes", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW2))
+//      addItem("Reports", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW3))
+//      addItem("Manage", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW4))
+
+      val tasks = addItem("Tasks")
+      val processes = addItem("Processes")
+      val reports = addItem("Reports", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW3))
+      val manage = addItem("Manage", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.VIEW4))
+
+      val inbox = tasks.addItem("Inbox", (e: MenuBar.MenuItem) => navigator.navigateTo(SampleView.INBOX_VIEW))
+      val queued = tasks.addItem("Queued")
+      val involved = tasks.addItem("Involved")
+      val archived = tasks.addItem("Archived")
+
+      val myInstances = processes.addItem("My instances")
+      val deployedProcessDefinition = processes.addItem("Deployed process definitions")
+
+
     }
     addComponent(menuBar)
   }
@@ -78,6 +94,8 @@ object SampleView {
   val VIEW3 = ""
   val VIEW4 = ""
 
+  val INBOX_VIEW = "ClassBasedView"
+
   private var count = 1
 
   private def inc = {
@@ -86,7 +104,8 @@ object SampleView {
 }
 
 class SampleView extends VerticalLayout with Navigator.View {
-  val label = Label("Label for SampleView")
+//  val label = Label("Label for SampleView")
+  val label = Label("")
 
   def init() {
 
@@ -105,7 +124,7 @@ class SampleView extends VerticalLayout with Navigator.View {
     if (viewName == SampleView.VIEW2) {
       SampleView.inc
     }
-    label.value = "Test message from view " + viewName + ", the view has been created " + SampleView.count + " times."
+//    label.value = "Test message from view " + viewName + ", the view has been created " + SampleView.count + " times."
     Notification.show("Entering view " + viewName)
   }
 }
