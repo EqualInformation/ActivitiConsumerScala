@@ -46,7 +46,7 @@ object JerseyClientTest {
       }
 
       println("Size of list: " + taskList.size)
-//      System.out.println("Some data from first element: " + taskList.get(0).getName)
+      println("Some data from first element: " + taskList.get(0).name)
     }
     catch {
       case e: Exception => {
